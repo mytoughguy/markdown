@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Marked in the browser</title>
+  <script src="js/marked.js"></script>
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/base-f935477e8faba16f29c6f9e4f0e1d032.css">
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/writer-0115c67175d681b0ce9facf3c65caf11.css">
+  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/base-read-mode-64acccf6966299cfa3d580140a2582fe.css">
+  <style type="text/css">
+      .container {
+        width: 100%;
+        display: -webkit-flex;
+        display: flex;
+      }
+
+      .left,
+      .right {
+        flex: 1;
+        margin: 10px;
+        height: 500px;
+        border-radius: 5px;
+        overflow: auto;
+      }
+
+      textarea {
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .right {
+        padding: 10px;
+      }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="left">
+      <textarea id="txt_content" style="width:100%; height:100%;"></textarea>
+    </div>
+    <div class="right" id="result">
+    </div>
+  </div>
+  <script>
+      window.onload = function() {
+        var txt = document.getElementById('txt_content');
+        var result = document.getElementById('result');
+
+        txt.onkeydown = function(e) {
+          result.innerHTML = marked(e.target.value);
+        }
+  }
+  </script>
+</body>
+
+</html>
