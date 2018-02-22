@@ -9,4 +9,10 @@
         - 要点是 通过 https://github.com/chjj/marked/blob/master/lib/marked.js 将markdown语法转换为html页面
 
 -学习教程
+
+-具体动手
+    -规划html页面
+    -导入marked.js组件
+
+-总结，记录
 */

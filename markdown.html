@@ -1,58 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <title>我的markdown编辑器</title>
+        <!-- 关键的组件 -->
+        <script src="js/marked.js"></script>
+        <style>
+            .tools {
+                height: 56px;
+                background-color: #59b580;
+            }
+            .container {
+                position: relative;
+            }
+            .editor {
+                margin-left: 0px;
+                width: 50%;
+                height: -webkit-fill-available;
+                background-color: #bae4f3;
+            }
+            .preview {
+                margin-right: 0px;
+                width: 50%;
+                height:2000px;
+                background: pink;
+                position: absolute;
+                left: 50%;
+                top: 0px;
+            }
+            textarea {
+                width: 100%;
+                height: 2000px;
+            }
+        </style>
+    </head>
 
-<head>
-  <meta charset="utf-8" />
-  <title>Marked in the browser</title>
-  <script src="js/marked.js"></script>
-  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/base-f935477e8faba16f29c6f9e4f0e1d032.css">
-  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/writer-0115c67175d681b0ce9facf3c65caf11.css">
-  <link rel="stylesheet" media="all" href="http://cdn-qn0.jianshu.io/assets/base-read-mode-64acccf6966299cfa3d580140a2582fe.css">
-  <style type="text/css">
-      .container {
-        width: 100%;
-        display: -webkit-flex;
-        display: flex;
-      }
+    <body>
+        <div class="tools">
 
-      .left,
-      .right {
-        flex: 1;
-        margin: 10px;
-        height: 500px;
-        border-radius: 5px;
-        overflow: auto;
-      }
+        </div>
+        <div class="container">
+            <div class="editor">
+                <textarea id="txt_content"></textarea>
+            </div>
+            <div class="preview" id="result">
 
-      textarea {
-        padding: 10px;
-        border-radius: 5px;
-      }
+            </div>
+        </div>
+        <!-- 找到输入的内容，通过marked.js输出到预览区 -->
+        <script>
+            window.onload = function() {
+                var txt = document.querySelector('#txt_content')
+                var result = document.querySelector('#result')
 
-      .right {
-        padding: 10px;
-      }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="left">
-      <textarea id="txt_content" style="width:100%; height:100%;"></textarea>
-    </div>
-    <div class="right" id="result">
-    </div>
-  </div>
-  <script>
-      window.onload = function() {
-        var txt = document.getElementById('txt_content');
-        var result = document.getElementById('result');
-
-        txt.onkeydown = function(e) {
-          result.innerHTML = marked(e.target.value);
-        }
-  }
-  </script>
-</body>
-
+                txt.onkeyup = function(e) {
+                    result.innerHTML = marked(e.target.value)
+                }
+            }
+        </script>
+    </body>
 </html>
